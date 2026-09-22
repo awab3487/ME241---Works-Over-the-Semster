@@ -389,4 +389,23 @@
     <string name="vanced_learnmore">Learn more</string>
     <string name="vanced_disable">Disable</string>
     <string name="vanced_enable">Enable</string>
+
+    <string name="vanced_music_remover">Music remover</string>
+    <string name="vanced_music_remover_settings_title">Music remover settings</string>
+    <string name="vanced_music_remover_settings_summary">Remove background music from videos and keep voices</string>
+    <string name="vanced_music_remover_title">Remove music from videos (ALPHA)</string>
+    <string name="vanced_music_remover_summary_on">Background music is removed, voices are kept</string>
+    <string name="vanced_music_remover_summary_off">Videos play with their original audio</string>
+    <string name="vanced_music_remover_strength_title">Removal strength</string>
+    <string name="vanced_music_remover_strength_low">Low (most natural voices)</string>
+    <string name="vanced_music_remover_strength_medium">Medium (recommended)</string>
+    <string name="vanced_music_remover_strength_high">High (least music, voices may sound thinner)</string>
+    <string name="vanced_music_remover_button_title">Show button under the player</string>
+    <string name="vanced_music_remover_button_summary">Turn music removal on or off with the No music button under the player</string>
+    <string name="vanced_music_remover_about_title">How it works</string>
+    <string name="vanced_music_remover_about_summary">The audio is processed on your device only, nothing is uploaded. Voices are kept based on their position in the stereo image, their frequency range and how steady the sound is. Background music behind a speaker is reduced strongly, while music mixed the same way as the voice (for example the instruments of a song) can only be partially removed.</string>
+    <string name="vanced_music_remover_enabled">Music removal is on</string>
+    <string name="vanced_music_remover_enabled_next_video">Music removal is on and will start with the next video</string>
+    <string name="vanced_music_remover_disabled">Music removal is off</string>
+    <string name="action_music_remover">No music</string>
 </resources>

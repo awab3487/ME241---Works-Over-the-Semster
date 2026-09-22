@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.google.android.apps.youtube.app.ui.SlimMetadataScrollableButtonContainerLayout;
 
+import fi.vanced.libraries.youtube.musicremover.MusicRemover;
+import fi.vanced.libraries.youtube.musicremover.MusicRemoverSettings;
 import fi.vanced.libraries.youtube.whitelisting.Whitelist;
 import fi.vanced.libraries.youtube.whitelisting.WhitelistType;
 import fi.vanced.utils.SharedPrefUtils;
@@ -26,6 +28,7 @@ public class SlimButtonContainer extends SlimMetadataScrollableButtonContainerLa
     public static AdButton adBlockButton;
     public static SBWhitelistButton sbWhitelistButton;
     private SBBrowserButton sbBrowserButton;
+    private MusicRemoverButton musicRemoverButton;
     private final Context context;
     SharedPreferences.OnSharedPreferenceChangeListener listener;
 
@@ -58,6 +61,7 @@ public class SlimButtonContainer extends SlimMetadataScrollableButtonContainerLa
             sbWhitelistButton = new SBWhitelistButton(context, this);
             sbBrowserButton = new SBBrowserButton(context, this);
             new SponsorBlockVoting(context, this);
+            musicRemoverButton = new MusicRemoverButton(context, this);
 
             addSharedPrefsChangeListener();
         }
@@ -115,6 +119,14 @@ public class SlimButtonContainer extends SlimMetadataScrollableButtonContainerLa
                     toggleWhitelistButton();
                     return;
                 }
+                if (MusicRemoverSettings.PREFERENCES_KEY_ENABLED.equals(key) && musicRemoverButton != null) {
+                    musicRemoverButton.changeEnabled(sharedPreferences.getBoolean(key, false));
+                    return;
+                }
+                if (MusicRemoverSettings.PREFERENCES_KEY_BUTTON.equals(key) && musicRemoverButton != null) {
+                    musicRemoverButton.setVisible(MusicRemover.isButtonVisible(context));
+                    return;
+                }
             }
             catch (Exception ex) {
                 Log.e(TAG, "Error handling shared preference change", ex);
@@ -124,6 +136,8 @@ public class SlimButtonContainer extends SlimMetadataScrollableButtonContainerLa
         context.getSharedPreferences(WhitelistType.ADS.getSharedPreferencesName(), Context.MODE_PRIVATE)
                 .registerOnSharedPreferenceChangeListener(listener);
         context.getSharedPreferences(WhitelistType.SPONSORBLOCK.getSharedPreferencesName(), Context.MODE_PRIVATE)
+                .registerOnSharedPreferenceChangeListener(listener);
+        context.getSharedPreferences(MusicRemoverSettings.PREFERENCES_NAME, Context.MODE_PRIVATE)
                 .registerOnSharedPreferenceChangeListener(listener);
     }
 

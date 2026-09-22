@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vanced_music_remover">إزالة الموسيقى</string>
+    <string name="vanced_music_remover_settings_title">إعدادات إزالة الموسيقى</string>
+    <string name="vanced_music_remover_settings_summary">إزالة الموسيقى الخلفية من الفيديوهات مع الإبقاء على الأصوات البشرية</string>
+    <string name="vanced_music_remover_title">إزالة الموسيقى من الفيديوهات (تجريبي)</string>
+    <string name="vanced_music_remover_summary_on">تتم إزالة الموسيقى الخلفية مع الإبقاء على الأصوات البشرية</string>
+    <string name="vanced_music_remover_summary_off">تُشغَّل الفيديوهات بصوتها الأصلي</string>
+    <string name="vanced_music_remover_strength_title">قوة الإزالة</string>
+    <string name="vanced_music_remover_strength_low">منخفضة (أكثر طبيعية للأصوات)</string>
+    <string name="vanced_music_remover_strength_medium">متوسطة (موصى بها)</string>
+    <string name="vanced_music_remover_strength_high">عالية (أقل موسيقى، وقد تبدو الأصوات أرق)</string>
+    <string name="vanced_music_remover_button_title">إظهار الزر أسفل المشغّل</string>
+    <string name="vanced_music_remover_button_summary">تشغيل إزالة الموسيقى أو إيقافها من زر «بدون موسيقى» أسفل المشغّل</string>
+    <string name="vanced_music_remover_about_title">كيف تعمل</string>
+    <string name="vanced_music_remover_about_summary">تتم معالجة الصوت على جهازك فقط ولا يُرفع أي شيء. يُحتفظ بالأصوات البشرية اعتماداً على موقعها في الصوت المجسّم (ستيريو) ونطاق تردداتها ومدى ثبات الصوت. تنخفض الموسيقى الخلفية خلف المتحدث بشكل كبير، أما الموسيقى الممزوجة بنفس طريقة الصوت البشري (مثل آلات الأغاني) فتُزال جزئياً فقط.</string>
+    <string name="vanced_music_remover_enabled">تم تشغيل إزالة الموسيقى</string>
+    <string name="vanced_music_remover_enabled_next_video">تم تشغيل إزالة الموسيقى وستبدأ من الفيديو التالي</string>
+    <string name="vanced_music_remover_disabled">تم إيقاف إزالة الموسيقى</string>
+    <string name="action_music_remover">بدون موسيقى</string>
+</resources>

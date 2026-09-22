@@ -1,0 +1,4 @@
+public final class app/revanced/patches/musicremover/RemoveMusicPatchKt {
+	public static final fun getRemoveMusicPatch ()Lapp/revanced/patcher/patch/Patch;
+}
+

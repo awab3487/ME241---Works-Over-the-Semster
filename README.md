@@ -36,3 +36,6 @@ Run the unit tests with `./gradlew testDebugUnitTest`.
 
 ### بالعربية
 ميزة «إزالة الموسيقى» تزيل الموسيقى الخلفية من الفيديوهات مع الإبقاء على الأصوات البشرية. تُعالَج الصوتيات على الجهاز مباشرة أثناء التشغيل، ويمكن تشغيلها من شاشة الإعدادات الخاصة بها أو من زر «بدون موسيقى» أسفل المشغّل، مع ثلاث درجات لقوة الإزالة (منخفضة، متوسطة، عالية).
+
+## ReVanced
+The music remover is also available as a patch for [ReVanced](https://revanced.app), which works with current YouTube versions. See [revanced/README.md](revanced/README.md) for how to use it on a phone.

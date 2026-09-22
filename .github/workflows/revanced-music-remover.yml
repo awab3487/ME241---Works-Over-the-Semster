@@ -1,0 +1,56 @@
+name: Build ReVanced music remover
+
+on:
+  push:
+    paths:
+      - "revanced/**"
+      - ".github/workflows/revanced-music-remover.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  build:
+    name: Build patches
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: revanced
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Test and build
+        env:
+          # ReVanced Patcher and its Gradle plugin are published to GitHub Packages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG_GRADLE_PROJECT_githubPackagesUsername: ${{ github.actor }}
+          ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :extensions:musicremover:test :patches:buildAndroid --no-daemon --stacktrace
+
+      - name: Upload patches file
+        uses: actions/upload-artifact@v4
+        with:
+          name: music-remover-patches
+          path: revanced/patches/build/libs/*.rvp
+
+      - name: Publish patches file
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete music-remover-latest --cleanup-tag --yes || true
+          gh release create music-remover-latest patches/build/libs/*.rvp \
+            --target "$GITHUB_SHA" \
+            --title "Music remover for ReVanced (latest build)" \
+            --notes "Download the .rvp file and add it in ReVanced Manager: Patches > ✏️ > + > Select from storage. Built from $GITHUB_SHA."

@@ -5,10 +5,11 @@ A [ReVanced](https://revanced.app) patch for YouTube that removes background mus
 ## بالعربية: طريقة التشغيل على الجوال
 
 1. ثبّت تطبيق **ReVanced Manager** على جوالك من [revanced.app](https://revanced.app) أو من [صفحة إصداراته على GitHub](https://github.com/ReVanced/revanced-manager/releases).
-2. نزّل ملف التعديل `patches-*.rvp` من صفحة الإصدار **music-remover-latest** في هذا المستودع (Releases).
-3. في ReVanced Manager: افتح تبويب **Patches** ← اضغط زر القلم ✏️ ← زر **+** ← **Select from storage** ← اختر ملف `.rvp` الذي نزّلته.
-4. اختر **YouTube** من قائمة التطبيقات، ثم في قائمة التعديلات فعّل **Remove music** مع التعديلات الرسمية التي تريدها (تعديل GmsCore support ضروري لتسجيل الدخول). ثم اضغط Patch وثبّت التطبيق الناتج، وثبّت GmsCore (MicroG) إذا طلب منك Manager ذلك.
-5. أضف زر **No music / بدون موسيقى** إلى الإعدادات السريعة: اسحب شريط الإشعارات للأسفل مرتين ← زر التعديل (القلم) ← اسحب زر «بدون موسيقى» إلى الأعلى.
+2. في ReVanced Manager: افتح تبويب **Patches** ← اضغط زر القلم ✏️ ← زر **+** ← **Enter URL** ← الصق هذا الرابط:
+   `https://github.com/awab3487/ME241---Works-Over-the-Semster/releases/download/music-remover-latest/patches-bundle.json`
+   (بهذه الطريقة يحدّث Manager التعديل تلقائياً عند صدور نسخة جديدة.)
+3. اختر **YouTube** من قائمة التطبيقات، ثم في قائمة التعديلات فعّل **Remove music** مع التعديلات الرسمية التي تريدها (تعديل GmsCore support ضروري لتسجيل الدخول). ثم اضغط Patch وثبّت التطبيق الناتج، وثبّت GmsCore (MicroG) إذا طلب منك Manager ذلك.
+4. أضف زر **No music / بدون موسيقى** إلى الإعدادات السريعة: اسحب شريط الإشعارات للأسفل مرتين ← زر التعديل (القلم) ← اسحب زر «بدون موسيقى» إلى الأعلى.
    - **ضغطة** على الزر: تشغيل أو إيقاف إزالة الموسيقى فوراً أثناء المشاهدة.
    - **ضغطة مطوّلة**: اختيار قوة الإزالة (منخفضة، متوسطة، عالية) أو الإيقاف.
 
@@ -25,7 +26,7 @@ A [ReVanced](https://revanced.app) patch for YouTube that removes background mus
 
 ## Building
 
-The [workflow](../.github/workflows/revanced-music-remover.yml) builds the patches file on every push that changes this directory and publishes it as the `music-remover-latest` release.
+The [workflow](../.github/workflows/revanced-music-remover.yml) builds the patches file on every push that changes this directory and publishes it as the `music-remover-latest` release, together with `patches-bundle.json`, which ReVanced Manager can add with **Enter URL**.
 
 To build locally, authenticate to GitHub Packages with a token that has the `read:packages` scope, for example in `~/.gradle/gradle.properties`:
 

@@ -49,8 +49,22 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          PATCHES_FILE=$(ls patches/build/libs/*.rvp)
+          RELEASE_URL="https://github.com/$GITHUB_REPOSITORY/releases/download/music-remover-latest"
+
+          # ReVanced Manager can add patches from a URL to a JSON file in the ReVanced API format,
+          # which also lets it update the patches automatically.
+          cat > patches-bundle.json <<EOF
+          {
+            "download_url": "$RELEASE_URL/$(basename "$PATCHES_FILE")",
+            "created_at": "$(date -u +%Y-%m-%dT%H:%M:%S)",
+            "description": "Removes background music from YouTube videos while keeping voices",
+            "version": "$(grep '^version' gradle.properties | cut -d= -f2 | tr -d ' ')-$GITHUB_RUN_NUMBER"
+          }
+          EOF
+
           gh release delete music-remover-latest --cleanup-tag --yes || true
-          gh release create music-remover-latest patches/build/libs/*.rvp \
+          gh release create music-remover-latest "$PATCHES_FILE" patches-bundle.json \
             --target "$GITHUB_SHA" \
             --title "Music remover for ReVanced (latest build)" \
-            --notes "Download the .rvp file and add it in ReVanced Manager: Patches > ✏️ > + > Select from storage. Built from $GITHUB_SHA."
+            --notes "In ReVanced Manager: Patches > ✏️ > + > Enter URL, and paste $RELEASE_URL/patches-bundle.json. Built from $GITHUB_SHA."
